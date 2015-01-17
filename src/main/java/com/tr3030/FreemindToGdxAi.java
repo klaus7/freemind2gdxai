@@ -18,6 +18,7 @@ import org.xml.sax.SAXException;
  */
 public class FreemindToGdxAi {
 
+    public static final String INDENT = "  ";
     int depth = 0;
     File outputFile;
     private FileWriter fileWriter;
@@ -109,9 +110,9 @@ public class FreemindToGdxAi {
 			if (attributes != null) {
 				Node textNode = attributes.getNamedItem("TEXT");
                 if (textNode != null) {
-                    String textContent = textNode.getTextContent();
+                    String textContent = processSubstitutions(textNode.getTextContent());
 
-                    out(StringUtils.repeat("  ", depth) + textContent);
+                    out(StringUtils.repeat(INDENT, depth) + textContent);
 
                     NodeList childNodes = item.getChildNodes();
 
@@ -121,6 +122,13 @@ public class FreemindToGdxAi {
                 }
             }
 		}
+    }
+
+    private String processSubstitutions(String textContent) {
+        return textContent
+                .replaceAll("^seq$|^seq\\s+", "sequence ")
+                .replaceAll("^sel$|^sel\\s+", "selector ")
+                ;
     }
 
     public static void main( String[] args ) throws ParseException, IOException {
