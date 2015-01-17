@@ -1,7 +1,7 @@
 # FreeMind to gdx-ai
 Converts freemind files to the gdx-ai format. (LibGDX-AI, see https://github.com/libgdx/gdx-ai and https://github.com/libgdx/gdx-ai/wiki/Behavior-Trees for an example of the file format)
 
-You can FreeMind here: http://freemind.sourceforge.net
+You can get FreeMind here: http://freemind.sourceforge.net
 
 The purpose of this little project is to get nice graphical editing for behaviour trees.
 
