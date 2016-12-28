@@ -55,6 +55,11 @@ public class FreemindToGdxAi {
             System.out.println(se.getMessage());
         } catch (IOException ioe) {
             System.err.println(ioe.getMessage());
+        }finally {
+            if (outputFile != null) {
+                fileWriter.flush();
+                fileWriter.close();
+            }
         }
 
         return false;
@@ -76,6 +81,7 @@ public class FreemindToGdxAi {
     private void out(String o) throws IOException {
         if (outputFile != null) {
             fileWriter.append(o);
+	    fileWriter.append("\n");
         } else {
             System.out.println(o);
         }
